@@ -20,3 +20,6 @@ min  //Para realizar a minimização do autômato
 ```
 sair  //Para finalizar do programa
 ```
+
+Vídeo explicativo: 
+https://youtu.be/m0YiHMhnmQ4

@@ -27,6 +27,18 @@ class AFD:
     self.finalStates = self.finalStates.split(',')
     self.transitions = readTransitions(lines[2:])
 
+  def checkWord(self, word):
+    acctualState = self.initialState
+    for letter in word:
+      for transition in self.transitions[acctualState]:
+        if transition[0] == letter:
+          acctualState = transition[1]
+
+    if acctualState in self.finalStates:
+      return [True, "Palavra aceita"]
+    else:
+      return [False, "Palavra não aceita"]
+      
   def checkMultiple(self, wordList):
     acc = []
     rej = []
@@ -43,19 +55,6 @@ class AFD:
     print("Palavras rejeitadas: ")
     for w in rej:
       print(w)
-
-
-  def checkWord(self, word):
-    acctualState = self.initialState
-    for letter in word:
-      for transition in self.transitions[acctualState]:
-        if transition[0] == letter:
-          acctualState = transition[1]
-
-    if acctualState in self.finalStates:
-      return [True, "Palavra aceita"]
-    else:
-      return [False, "Palavra não aceita"]
 
   def notReachables(self):
     reachables = [self.initialState]
